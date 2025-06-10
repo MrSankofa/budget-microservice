@@ -24,8 +24,9 @@ public class BudgetController {
   }
 
   @PostMapping("/{userId}")
-  public ResponseEntity<?> addBillToBudget(@RequestParam("billId") Long billId,
-                                          @RequestParam("userId") Long userId) {
+  public ResponseEntity<?> addBillToBudget(
+      @PathVariable Long userId,                         // <- from URL
+      @RequestParam("billId") Long billId) {             // <- from query param
     try {
       return ResponseEntity.ok(budgetService.addBudgetBill(billId, userId));
     } catch (Exception e) {

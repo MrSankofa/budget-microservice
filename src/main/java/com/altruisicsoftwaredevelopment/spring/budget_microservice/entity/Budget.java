@@ -3,6 +3,7 @@ package com.altruisicsoftwaredevelopment.spring.budget_microservice.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,6 +26,8 @@ public class Budget {
   }
 
   public void removeBill(Long billId) {
+    if (bills == null) bills = new ArrayList<>();
+
     bills.removeIf(bill -> bill.getBillId().equals(billId));
   }
 }
